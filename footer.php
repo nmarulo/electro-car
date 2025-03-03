@@ -1,37 +1,57 @@
-            <div id="container-footer"><!-- #container-footer -->
-                <div class="container">
-                    <br/>
-                    <div id="social" class="clearfix">
-                        <ul class="list-inline pull-left">
-                            <li style="color: #fff;">Comparte esta página:</li>
-                            <li>
-                                <span class='st_facebook_large' displayText='Facebook'></span>
-                                <span class='st_twitter_large' displayText='Tweet'></span>
-                                <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                                <span class='st_googleplus_large' displayText='Google +'></span>
-                                <span class='st_email_large' displayText='Email'></span>
-                            </li>
-                        </ul>
-                        <ul class="list-inline pull-right">
-                            <li><a href="https://www.facebook.com/marubox" title="Maru Box - Car Audio" target="_blank">Facebook</a></li>
-                            <li><a href="https://plus.google.com/104815988315793120030/about" title="Maru Box - Car Audio" target="_blank">Google+</a></li>
-                            <li><a href="http://benalmas.es/" title="Benalmas | Caminando por benalmadena" target="_blank">Benalmas</a></li>
-                        </ul>
-                    </div>
-                    <hr style="border-color: #777;"/>
-                    <div class="clearfix">
-                        <p class="pull-left">&COPY; Maru-Box</p>
-                        <p class="pull-right">By <a href="http://softn.red/" title="Portal SoftN" target="_blank">SoftN</a></p>
+<div class="">
+    <div class="container">
+        <hr/>
+        <div class="row clearfix">
+            <div class="col-sm-6">
+                <div class="fb-page" data-href="https://www.facebook.com/marubox" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/marubox">
+                            <a href="https://www.facebook.com/marubox">Electro Car</a>
+                        </blockquote>
                     </div>
                 </div>
-            </div><!-- #container-footer -->
-        </div><!-- #main-container -->
-        <script type="text/javascript">var switchTo5x=true;</script>
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "588e603e-4132-4837-bd61-694b35cddf52", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-    </body>
+            </div>
+            <div class="col-sm-6">
+                <a class="twitter-timeline"  href="https://twitter.com/electrocar21" data-widget-id="713740186249773057">Tweets por el @electrocar21.</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-footer"><!-- bg-footer -->
+    <div class="container">
+        <hr/>
+        <div class="clearfix">
+            <p class="pull-right softn">By <a href="http://softn.red/" title="Portal SoftN" target="_blank">SoftN</a></p>
+            <p class="pull-left">&copy; Electro-Car.es - Arroyo de la Miel - Benalmádena - Málaga</p>
+        </div>
+    </div>
+</footer><!-- bg-footer -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/simple-lightbox.min.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        var $gallery = $('.gallery a').simpleLightbox();
+    });
+</script>
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=365892200191950";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<script>!function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + "://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");</script>
+</body>
 </html>

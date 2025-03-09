@@ -1,0 +1,67 @@
+---
+
+---
+
+<section class="hero-section position-relative d-flex align-items-center">
+  <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100">
+  </div>
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="mb-4">
+          <h1 class="display-3 text-white fw-bold">
+            Servicio profesional de automoción
+          </h1>
+        </div>
+        <p class="lead text-white mb-5">
+          Transformamos tu vehículo con soluciones de audio personalizadas y servicios técnicos especializados.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#services"
+             class="btn btn-danger btn-lg rounded">
+            <i class="bi bi-tools me-2"></i>Nuestros Servicios
+          </a>
+          <a href="#contact"
+             class="btn btn-outline-light btn-lg rounded">
+            <i class="bi bi-envelope-fill me-2"></i>Contactanos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="position-absolute start-50 bottom-0 translate-middle-x mb-4">
+    <a href="#services"
+       class="text-white text-decoration-none d-flex flex-column align-items-center">
+      <span class="small text-white-50 mb-3">Descubre Más</span>
+      <i class="bi bi-chevron-down scroll-arrow"></i>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    overflow: hidden;
+    height: calc(100vh - calc(4.5rem));
+  }
+
+  .hero-overlay {
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.95), rgba(220, 53, 69, 0.85));
+  }
+
+  .scroll-arrow {
+    font-size: 1.5rem;
+    animation: scrollBounce 2s infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+</style>

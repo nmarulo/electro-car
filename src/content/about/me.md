@@ -1,3 +1,7 @@
+---
+image: 'https://picsum.photos/600/400'
+---
+
 ### Mauricio Marulanda L.
 
 My beginnings in **Car-Audio** date back to 1994, at first I took it as a _hobbie_, little by little my friends

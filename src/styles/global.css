@@ -1,0 +1,18 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.min.css";
+
+:root {
+  --primary-font: 'Montserrat', sans-serif;
+  --secondary-font: 'Poppins', sans-serif;
+  --primary-color: #dc3545;
+  --secondary-color: #212529;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}

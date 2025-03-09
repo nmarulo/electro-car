@@ -1,0 +1,71 @@
+---
+import {HIGHLIGHTS_WORKS} from '../consts/highlights-works';
+---
+
+<section id="works"
+         class="py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 mx-auto text-center">
+        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">Trabajos</span>
+        <h2 class="display-6 fw-bold mb-4">Proyectos destacados</h2>
+      </div>
+    </div>
+    <div class="row g-4 mb-5">
+      {
+        HIGHLIGHTS_WORKS.map(({
+          title,
+          description,
+          image,
+          category
+        }) => (
+          <div class="col-md-6 col-lg-4"
+               data-category="seguridad">
+            <div class="project-card rounded-4 overflow-hidden">
+              <div class="position-relative">
+                <img src={image}
+                     alt={description}
+                     class="img-fluid w-100">
+                <div class="project-overlay d-flex flex-column align-items-start p-4">
+                  <span class="badge bg-danger mb-2">{category}</span>
+                  <h3 class="h5 text-white mb-2">{title}</h3>
+                  <p class="text-white"
+                     style="--bs-text-opacity: .85;">{description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <a href="/finished-works"
+           class="btn btn-outline-danger btn-lg px-5">
+          Proyectos terminados <i class="bi bi-arrow-right ms-2 align-middle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+    rgba(220, 53, 69, 0.85),
+    rgba(33, 37, 41, 0.95) 100%
+    );
+    opacity: 0;
+    transition: all 0.4s ease;
+    will-change: opacity;
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+</style>

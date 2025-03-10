@@ -1,6 +1,6 @@
 ---
 import {getCollection} from 'astro:content';
-import CardWork from '../components/CardWork.astro';
+import CardWork from './CardWork.astro';
 const works = await getCollection('works');
 
 const filters = works.map(value => value.data)

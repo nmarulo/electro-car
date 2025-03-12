@@ -12,39 +12,57 @@ import {SERVICES} from '../../consts/services';
         <h2 class="display-6 fw-bold mb-4">Soluciones Profesionales para tu Vehículo</h2>
       </div>
     </div>
-    <div class="row g-4">
-      {
-        SERVICES.map(({
-          title,
-          description,
-          icon,
-          services
-        }) => (
-          <div class="col-md-6">
-            <div class="service-card p-4 bg-white rounded-4 h-100 position-relative overflow-hidden">
-              <div class="service-icon mb-4 d-inline-flex align-items-center justify-content-center rounded-circle bg-white p-3 text-white"
-                   style="--bs-bg-opacity: 0.2">
-                <i class={`${icon} display-6`}></i>
+    {
+      SERVICES.map(({
+        title,
+        description,
+        icon,
+        services,
+        image_start,
+        image_end
+      }) => (
+        <div class="card mb-5 service-card border-0 text-white">
+          <div class="row g-0">
+            {
+              image_start &&
+              <div class="col-md-7">
+                <img src={image_start}
+                     class="img-fluid rounded-2"
+                     alt={description}>
               </div>
-              <h3 class="h4 fw-bold mb-3">{title}</h3>
-              <p class="mb-4 text-white"
-                 style="--bs-text-opacity: .85">{description}</p>
-              <ul class="list-unstyled mb-4">
-                {
-                  services.map((service) => (
-                    <li class="mb-2">
-                      <i class="bi bi-check2-circle me-1"></i>
-                      <span class="text-white"
-                            style="--bs-text-opacity: .85">{service}</span>
-                    </li>
-                  ))
-                }
-              </ul>
+            }
+            <div class="col-md-5 order-2">
+              <div class="card-body p-4">
+                <div class="service-icon mb-4 d-inline-flex align-items-center justify-content-center rounded-circle bg-white p-3"
+                     style="--bs-bg-opacity: 0.3">
+                  <i class={`${icon} display-6`}></i>
+                </div>
+                <h3 class="card-title">{title}</h3>
+                <p class="card-text">{description}</p>
+                <ul class="list-unstyled mb-0">
+                  {
+                    services.map((service) => (
+                      <li class="mb-2">
+                        <i class="bi bi-check2-circle me-1"></i>
+                        <span class="text-white fw-medium">{service}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
             </div>
+            {
+              image_end &&
+              <div class="col-md-7 order-1 order-md-3">
+                <img src={image_end}
+                     class="img-fluid rounded-2"
+                     alt={description}>
+              </div>
+            }
           </div>
-        ))
-      }
-    </div>
+        </div>
+      ))
+    }
   </div>
 </section>
 
@@ -58,5 +76,3 @@ import {SERVICES} from '../../consts/services';
     height: 80px;
   }
 </style>
-
-

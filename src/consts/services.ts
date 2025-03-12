@@ -3,6 +3,8 @@ export interface Service {
   description: string;
   icon: string;
   services: string[];
+  image_start?: string;
+  image_end?: string;
 }
 
 export const SERVICES: Array<Service> = [
@@ -14,7 +16,8 @@ export const SERVICES: Array<Service> = [
       'Amplificadores',
       'Subwoofers',
       'Radios'
-    ]
+    ],
+    image_end: 'https://picsum.photos/700/450'
   },
   {
     title: 'Electrónica Automotriz',
@@ -24,7 +27,8 @@ export const SERVICES: Array<Service> = [
       'Diagnóstico Computarizado',
       'Reparación de fallos eléctricos y electrónicos',
       'Sistemas de Navegación'
-    ]
+    ],
+    image_start: 'https://picsum.photos/700/450'
   },
   {
     title: 'Sistemas de Seguridad',
@@ -34,7 +38,8 @@ export const SERVICES: Array<Service> = [
       'Alarmas y GPS',
       'Sensores de estacionamiento',
       'Cámaras de visión trasera'
-    ]
+    ],
+    image_end: 'https://picsum.photos/700/450'
   },
   {
     title: 'Aire Acondicionado',
@@ -44,12 +49,14 @@ export const SERVICES: Array<Service> = [
       'Recarga de Gas',
       'Limpieza de Conductos',
       'Control de Temperatura'
-    ]
+    ],
+    image_start: 'https://picsum.photos/700/450'
   },
   {
     title: 'Trabajos personalizados',
     description: 'Instalaciones y configuraciones de audio, iluminación y sistemas de entretenimiento.',
     icon: 'bi bi-tools',
-    services: []
+    services: [],
+    image_end: 'https://picsum.photos/700/450'
   }
 ];

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js?url';
 
 interface Props {
   title: string;
@@ -36,5 +37,4 @@ const {
 <meta name="description"
       content={description}/>
 
-<script is:inline
-        src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src={bootstrap}></script>

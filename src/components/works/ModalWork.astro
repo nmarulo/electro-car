@@ -1,0 +1,21 @@
+---
+import ModalCardWork from './ModalCardWork.astro';
+const {
+  id,
+  workId
+} = Astro.props;
+---
+
+<div class="modal fade"
+     id={id}
+     tabindex="-1"
+     aria-labelledby={`${id}-label`}
+     aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-transparent">
+      <div class="modal-body">
+        <ModalCardWork workId={workId}/>
+      </div>
+    </div>
+  </div>
+</div>

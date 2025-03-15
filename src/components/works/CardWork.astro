@@ -1,5 +1,6 @@
 ---
-import {getCollection, render} from 'astro:content';
+import {getCollection} from 'astro:content';
+import ModalWork from './ModalWork.astro';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
@@ -9,7 +10,6 @@ export async function getStaticPaths() {
   }));
 }
 const {work} = Astro.props;
-const {Content} = await render(work);
 const {
   slug,
   data
@@ -20,6 +20,7 @@ const {
   filter,
   tags
 } = data;
+const MODAL_WORK_ID = slug + '-modal-work';
 ---
 
 <div class="card border-0">
@@ -28,11 +29,18 @@ const {
        alt={title}>
   <div class="card-img-overlay">
     <div class="work-overlay-content">
-      <a href="#"
-         class="btn btn-sm btn-light rounded-circle"><i class="bi bi-zoom-in"></i></a>
+      <button type="button"
+              class="btn btn-lg fs-1 text-white stretched-link"
+              data-bs-toggle="modal"
+              data-bs-target={`#${MODAL_WORK_ID}`}>
+        <i class="bi bi-zoom-in"></i>
+      </button>
     </div>
   </div>
 </div>
+
+<ModalWork id={MODAL_WORK_ID}
+           workId={slug}/>
 
 <style>
   .card-img-overlay {

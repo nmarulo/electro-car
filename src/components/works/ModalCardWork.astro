@@ -1,0 +1,33 @@
+---
+import {getEntry, render} from 'astro:content';
+
+const {workId} = Astro.props;
+const work = await getEntry('works', workId);
+const {Content} = await render(work);
+const {
+  slug,
+  data
+} = work;
+const {
+  image,
+  title,
+  filter,
+  tags
+} = data;
+---
+
+<div class="card border-0">
+  <div class="card-body border-bottom">
+    <button type="button"
+            class="btn-close float-end"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    <Content/>
+    {tags.map((tag: string) => (
+      <span class="badge text-danger border border-danger me-2">{tag}</span>
+    ))}
+  </div>
+  <img src={image}
+       class="card-img-bottom"
+       alt={title}>
+</div>

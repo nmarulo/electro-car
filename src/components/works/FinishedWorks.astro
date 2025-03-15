@@ -47,8 +47,8 @@ const filters = works.map(value => value.data)
       </div>
     </div>
   </div>
-
-  <div class="row g-4 portfolio-grid">
+  
+  <div class="portfolio-grid gap-0 column-gap-3">
     {
       works.map(work => {
         const {
@@ -57,7 +57,7 @@ const filters = works.map(value => value.data)
         } = work;
 
         return (
-          <div class={`col-md-6 col-lg-4 portfolio-item ${data.filter}`}>
+          <div class={`portfolio-item mb-3 ${data.filter}`}>
             <CardWork work={work}/>
           </div>
         );
@@ -73,6 +73,10 @@ const filters = works.map(value => value.data)
     background-position: center;
     padding: 100px 0;
     position: relative;
+  }
+
+  .portfolio-grid {
+    columns: 3;
   }
 
   .overlay {

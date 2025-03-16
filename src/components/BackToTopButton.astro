@@ -2,26 +2,15 @@
 
 ---
 
-<button
-  id="back-to-top"
-  class="btn btn-danger btn-sm rounded-start-pill shadow position-fixed end-0 mb-4 d-flex align-items-center justify-content-center"
-  aria-label="Volver arriba"
->
+<button id="back-to-top"
+        class="btn btn-danger btn-sm rounded-start-pill position-fixed end-0 mb-3 bottom-0 invisible"
+        aria-label="Volver arriba">
   <i class="bi bi-arrow-up-short fs-4"></i>
 </button>
 
 <style>
   #back-to-top {
-    width: 45px;
-    height: 45px;
-    visibility: hidden;
     transition: all 0.3s ease;
-  }
-
-  #back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    bottom: 20px;
   }
 
   #back-to-top:hover {
@@ -35,10 +24,10 @@
 
     if (backToTopButton) {
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('visible');
+        if (window.scrollY <= 300) {
+          backToTopButton.classList.add('invisible');
         } else {
-          backToTopButton.classList.remove('visible');
+          backToTopButton.classList.remove('invisible');
         }
       });
 

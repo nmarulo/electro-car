@@ -1,6 +1,8 @@
 export const en = {
   'common.our-services': 'Our Services',
   'common.contact-us': 'Contact Us',
+  'head.site-title': 'Electro Car Systems | Professional automotive service',
+  'head.site-description': 'Professional automotive service. Electrical systems overhaul and repair. Car Audio installation at home.',
   'common.finished-works': 'Finished Works',
   'about-me.car-audio-workshop': 'Car Audio Workshop',
   'hero.professional-automotive': 'Professional Automotive Service',

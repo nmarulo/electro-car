@@ -2,6 +2,8 @@ export const es = {
   'common.our-services': 'Nuestros servicios',
   'common.contact-us': 'Contáctanos',
   'common.finished-works': 'Trabajos finalizados',
+  'head.site-title': 'Electro Car Systems | Servicio profesional de automoción',
+  'head.site-description': 'Servicio profesional de automoción. Revisión y reparación de sistemas eléctricos. Instalación de Car Audio a domicilio.',
   'about-me.car-audio-workshop': 'Taller de audio para coches',
   'hero.professional-automotive': 'Servicio profesional de automoción',
   'hero.custom-audio-solutions': 'Transformamos tu vehículo con soluciones de audio personalizadas y servicios técnicos especializados.',

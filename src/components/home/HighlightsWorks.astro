@@ -1,4 +1,9 @@
 ---
+import {getLangFromUrl} from '../../i18n/utils';
+import {getRelativeLocaleUrl} from 'astro:i18n';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const worksURL = getRelativeLocaleUrl(currentLocale, 'works');
 ---
 
 <section id="works"
@@ -12,7 +17,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
-        <a href="/works"
+        <a href={worksURL}
            class="btn text-white btn-lg d-inline-flex gap-2 stretched-link"
            aria-label="Ver galería completa de trabajos">
           Ver galería

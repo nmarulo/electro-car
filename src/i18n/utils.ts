@@ -1,4 +1,5 @@
-import {defaultLang, ui} from './ui';
+import {defaultLang, services, ui} from './ui';
+import type {Service} from '../content/services/service.interfaces.ts';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
@@ -15,6 +16,10 @@ export function useTranslations(lang: keyof typeof ui) {
 
     return ui[lang][key] || ui[defaultLang][key];
   };
+}
+
+export function getTranslations(lang: keyof typeof services): Array<Service> {
+  return services[lang] || services[defaultLang];
 }
 
 export function changeLangFromUrl(url: URL, lang: string) {

@@ -1,13 +1,6 @@
-export interface Service {
-  title: string;
-  description: string;
-  icon: string;
-  services: string[];
-  image_start?: string;
-  image_end?: string;
-}
+import type {Service} from './service.interfaces.ts';
 
-export const SERVICES: Array<Service> = [
+export const es: Array<Service> = [
   {
     title: 'Audio Profesional',
     description: 'Instalación y configuración de sistemas de audio de alta fidelidad para una experiencia sonora excepcional.',

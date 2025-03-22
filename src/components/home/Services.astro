@@ -1,9 +1,9 @@
 ---
-import {SERVICES} from '../../consts/services';
-import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+import {getLangFromUrl, useTranslations, getTranslations} from '../../i18n/utils';
 
 const currentLocale = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLocale);
+const services = getTranslations(currentLocale);
 ---
 
 <section id="services"
@@ -17,7 +17,7 @@ const t = useTranslations(currentLocale);
       </div>
     </div>
     {
-      SERVICES.map(({
+      services.map(({
         title,
         description,
         icon,

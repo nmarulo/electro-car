@@ -1,5 +1,9 @@
 ---
 import {Content as MauricioContent, frontmatter} from '../../content/about/me.md';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
 ---
 
 <div class="bg-dark text-white py-5">
@@ -12,7 +16,7 @@ import {Content as MauricioContent, frontmatter} from '../../content/about/me.md
         <div class="about-image-container p-3 bg-white rounded shadow">
           <img src={frontmatter.image}
                class="img-fluid rounded"
-               alt="Taller de audio para coches">
+               alt={t('about-me.car-audio-workshop')}>
         </div>
       </div>
     </div>

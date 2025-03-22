@@ -1,8 +1,11 @@
 ---
 import {getCollection} from 'astro:content';
 import CardWork from './CardWork.astro';
-const works = await getCollection('works');
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
 
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
+const works = await getCollection('works');
 const filters = works.map(value => value.data)
                      .map(value => ({
                        filter: value.filter,
@@ -17,7 +20,7 @@ const filters = works.map(value => value.data)
   <div class="container position-relative z-3">
     <div class="row py-5">
       <div class="col-lg-8 mx-auto text-center text-white">
-        <h1 class="display-4 fw-bold m-0">Trabajos finalizados</h1>
+        <h1 class="display-4 fw-bold m-0">{t('common.finished-works')}</h1>
       </div>
     </div>
   </div>
@@ -30,7 +33,7 @@ const filters = works.map(value => value.data)
         <div class="filter-button-group">
           <button type="button"
                   class="btn btn-outline-danger active"
-                  data-filter="*">Todos
+                  data-filter="*">{t('finished-works.all')}
           </button>
           {
             filters.map(filter => {

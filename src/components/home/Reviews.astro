@@ -1,5 +1,9 @@
 ---
 import {REVIEWS} from '../../consts/reviews';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
 ---
 
 <div id="reviews"
@@ -7,8 +11,8 @@ import {REVIEWS} from '../../consts/reviews';
   <div class="container">
     <div class="row mb-5">
       <div class="col-lg-6 mx-auto text-center">
-        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">Reseñas</span>
-        <h2 class="display-6 fw-bold mb-4">Lo que dicen nuestros clientes</h2>
+        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">{t('reviews.badge')}</span>
+        <h2 class="display-6 fw-bold mb-4">{t('reviews.customer-testimonials')}</h2>
       </div>
     </div>
     <div class="row justify-content-center">

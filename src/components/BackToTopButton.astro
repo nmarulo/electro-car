@@ -1,10 +1,13 @@
 ---
+import {getLangFromUrl, useTranslations} from '../i18n/utils';
 
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
 ---
 
 <button id="back-to-top"
         class="btn btn-danger btn-sm rounded-start-pill position-fixed end-0 mb-3 bottom-0 invisible"
-        aria-label="Volver arriba">
+        aria-label={t('back-to-top.button')}>
   <i class="bi bi-arrow-up-short fs-4"></i>
 </button>
 

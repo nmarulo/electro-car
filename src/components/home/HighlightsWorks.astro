@@ -1,9 +1,10 @@
 ---
-import {getLangFromUrl} from '../../i18n/utils';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
 import {getRelativeLocaleUrl} from 'astro:i18n';
 
 const currentLocale = getLangFromUrl(Astro.url);
 const worksURL = getRelativeLocaleUrl(currentLocale, 'works');
+const t = useTranslations(currentLocale);
 ---
 
 <section id="works"
@@ -11,16 +12,16 @@ const worksURL = getRelativeLocaleUrl(currentLocale, 'works');
   <div class="container">
     <div class="row mb-5">
       <div class="col-lg-6 mx-auto text-center">
-        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">Proyectos</span>
-        <h2 class="display-5 fw-bold mb-4 text-white">Trabajos finalizados</h2>
+        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">{t('highlights-works.projects')}</span>
+        <h2 class="display-5 fw-bold mb-4 text-white">{t('common.finished-works')}</h2>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
         <a href={worksURL}
            class="btn text-white btn-lg d-inline-flex gap-2 stretched-link"
-           aria-label="Ver galería completa de trabajos">
-          Ver galería
+           aria-label={t('highlights-works.complete-gallery-works')}>
+          {t('highlights-works.view-gallery')}
           <i class="bi bi-arrow-right"
              aria-hidden="true"></i>
         </a>

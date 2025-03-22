@@ -1,5 +1,8 @@
 ---
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
 
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
 ---
 
 <section class="hero-section position-relative d-flex align-items-center">
@@ -10,20 +13,20 @@
       <div class="col-lg-8">
         <div class="mb-4">
           <h1 class="display-3 text-white fw-bold">
-            Servicio profesional de automoción
+            {t('hero.professional-automotive')}
           </h1>
         </div>
         <p class="lead text-white mb-5">
-          Transformamos tu vehículo con soluciones de audio personalizadas y servicios técnicos especializados.
+          {t('hero.custom-audio-solutions')}
         </p>
         <div class="d-flex flex-wrap gap-4">
           <a href="#services"
              class="btn btn-danger btn-lg rounded flex-fill">
-            <i class="bi bi-tools me-2"></i>Nuestros Servicios
+            <i class="bi bi-tools me-2"></i>{t('common.our-services')}
           </a>
           <a href="#contact"
              class="btn btn-outline-light btn-lg rounded flex-fill">
-            <i class="bi bi-envelope-fill me-2"></i>Contáctanos
+            <i class="bi bi-envelope-fill me-2"></i>{t('common.contact-us')}
           </a>
         </div>
       </div>
@@ -32,7 +35,7 @@
   <div class="position-absolute start-50 bottom-0 translate-middle-x mb-4">
     <a href="#services"
        class="text-white text-decoration-none d-flex flex-column align-items-center">
-      <span class="small text-white-50 mb-3">Descubre más</span>
+      <span class="small text-white-50 mb-3">{t('hero.discover-more')}</span>
       <i class="bi bi-chevron-down scroll-arrow"></i>
     </a>
   </div>

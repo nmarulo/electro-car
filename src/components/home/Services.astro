@@ -1,5 +1,9 @@
 ---
 import {SERVICES} from '../../consts/services';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
 ---
 
 <section id="services"
@@ -8,8 +12,8 @@ import {SERVICES} from '../../consts/services';
   <div class="container">
     <div class="row mb-5">
       <div class="col-lg-6 mx-auto text-center">
-        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">Nuestros Servicios</span>
-        <h2 class="display-6 fw-bold mb-4">Soluciones Profesionales para tu Vehículo</h2>
+        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">{t('common.our-services')}</span>
+        <h2 class="display-6 fw-bold mb-4">{t('services.professional-vehicle-solutions')}</h2>
       </div>
     </div>
     {

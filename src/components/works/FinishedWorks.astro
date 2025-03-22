@@ -5,7 +5,12 @@ import {getLangFromUrl, useTranslations} from '../../i18n/utils';
 
 const currentLocale = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLocale);
-const works = await getCollection('works');
+const works = await getCollection('works', ({slug}) => {
+  const [lang] = slug.split('/');
+
+  return currentLocale == lang;
+});
+
 const filters = works.map(value => value.data)
                      .map(value => ({
                        filter: value.filter,

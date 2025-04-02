@@ -47,6 +47,23 @@ const {
     height: 100vh;
     z-index: 1060;
     cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .zoomed-image-container.show {
+    opacity: 1;
+  }
+
+  .zoomed-image-container > img {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .zoomed-image-container.show > img {
+    transform: scale(1);
+    opacity: 1;
   }
 </style>
 
@@ -60,6 +77,11 @@ const {
                 const zoomedContainer = container.querySelector('.zoomed-image-container') as HTMLElement;
 
                 zoomedContainer.classList.remove('d-none');
+
+                // Forzar un reflow para que la transición funcione
+                void zoomedContainer.offsetWidth;
+
+                zoomedContainer.classList.add('show');
               });
             });
 
@@ -67,7 +89,13 @@ const {
             .forEach(element => {
               element.addEventListener('click', function (this: HTMLElement, event: Event) {
                 event.stopPropagation();
-                this.classList.add('d-none');
+
+                this.classList.remove('show');
+
+                // Esperar a que termine la transición antes de ocultar
+                setTimeout(() => {
+                  this.classList.add('d-none');
+                }, 300);
               });
             });
   });

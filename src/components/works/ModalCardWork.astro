@@ -28,6 +28,47 @@ const {
     ))}
   </div>
   <img src={image}
-       class="card-img-bottom"
+       class="modal-work-image img-fluid object-fit-none"
        alt={title}>
+  <div class="zoomed-image-container d-none position-fixed top-0 start-0 w-100 d-flex justify-content-center align-items-center bg-black bg-opacity-75">
+    <img src={image}
+         class="img-fluid"
+         alt={title}>
+  </div>
 </div>
+
+<style>
+  .modal-work-image {
+    max-height: 80vh;
+    cursor: zoom-in;
+  }
+
+  .zoomed-image-container {
+    height: 100vh;
+    z-index: 1060;
+    cursor: zoom-out;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.modal-work-image')
+            .forEach(element => {
+              element.addEventListener('click', function (this: HTMLElement, event: Event) {
+                event.stopPropagation();
+                const container = this.closest('.card') as HTMLElement;
+                const zoomedContainer = container.querySelector('.zoomed-image-container') as HTMLElement;
+
+                zoomedContainer.classList.remove('d-none');
+              });
+            });
+
+    document.querySelectorAll('.zoomed-image-container')
+            .forEach(element => {
+              element.addEventListener('click', function (this: HTMLElement, event: Event) {
+                event.stopPropagation();
+                this.classList.add('d-none');
+              });
+            });
+  });
+</script>

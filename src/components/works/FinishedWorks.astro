@@ -1,0 +1,111 @@
+---
+import {getCollection} from 'astro:content';
+import CardWork from './CardWork.astro';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
+const works = await getCollection('works', ({slug}) => {
+  const [lang] = slug.split('/');
+
+  return currentLocale == lang;
+});
+
+const filters = works.map(value => value.data)
+                     .map(value => ({
+                       filter: value.filter,
+                       tag: value.tags.at(0)
+                     }))
+                     .filter((value, index, self) =>
+                       index === self.findIndex(find => find.filter === value.filter)
+                     );
+---
+
+<div class="finished-works-hero position-relative">
+  <div class="container position-relative z-3">
+    <div class="row py-5">
+      <div class="col-lg-8 mx-auto text-center text-white">
+        <h1 class="display-4 fw-bold m-0">{t('common.finished-works')}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="filters-group-wrap text-center">
+        <div class="filter-button-group">
+          <button type="button"
+                  class="btn btn-outline-danger active"
+                  data-filter="*">{t('finished-works.all')}
+          </button>
+          {
+            filters.map(filter => {
+              return (
+                <button type="button"
+                        class="btn btn-outline-danger text-capitalize me-1"
+                        data-filter={`.${filter.filter}`}>{filter.tag}</button>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="portfolio-grid gap-0 column-gap-3">
+    {
+      works.map(work => {
+        const {
+          slug,
+          data
+        } = work;
+
+        return (
+          <div class={`portfolio-item mb-3 ${data.filter}`}>
+            <CardWork work={work}/>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .finished-works-hero {
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.95), rgba(220, 53, 69, 0.85));
+
+  }
+
+  .portfolio-grid {
+    columns: 3;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-button-group button');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', function (this: Element) {
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+
+        this.classList.add('active');
+
+        const filterValue = this.getAttribute('data-filter') || '*';
+
+        portfolioItems.forEach((item) => {
+          if (filterValue === '*') {
+            (item as HTMLElement).style.display = 'block';
+          } else if (item.classList.contains(filterValue.replace('.', ''))) {
+            (item as HTMLElement).style.display = 'block';
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

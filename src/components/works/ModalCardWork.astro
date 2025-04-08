@@ -1,0 +1,102 @@
+---
+import {getEntry, render} from 'astro:content';
+
+const {workId} = Astro.props;
+const work = await getEntry('works', workId);
+const {Content} = await render(work);
+const {
+  slug,
+  data
+} = work;
+const {
+  image,
+  title,
+  filter,
+  tags
+} = data;
+---
+
+<div class="card border-0">
+  <div class="card-body border-bottom">
+    <button type="button"
+            class="btn-close float-end"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    <Content/>
+    {tags.map((tag: string) => (
+      <span class="badge text-danger border border-danger me-2">{tag}</span>
+    ))}
+  </div>
+  <img src={image}
+       class="modal-work-image img-fluid object-fit-none"
+       alt={title}>
+  <div class="zoomed-image-container d-none position-fixed top-0 start-0 w-100 d-flex justify-content-center align-items-center bg-black bg-opacity-75">
+    <img src={image}
+         class="img-fluid"
+         alt={title}>
+  </div>
+</div>
+
+<style>
+  .modal-work-image {
+    max-height: 80vh;
+    cursor: zoom-in;
+  }
+
+  .zoomed-image-container {
+    height: 100vh;
+    z-index: 1060;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .zoomed-image-container.show {
+    opacity: 1;
+  }
+
+  .zoomed-image-container > img {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .zoomed-image-container.show > img {
+    transform: scale(1);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.modal-work-image')
+            .forEach(element => {
+              element.addEventListener('click', function (this: HTMLElement, event: Event) {
+                event.stopPropagation();
+                const container = this.closest('.card') as HTMLElement;
+                const zoomedContainer = container.querySelector('.zoomed-image-container') as HTMLElement;
+
+                zoomedContainer.classList.remove('d-none');
+
+                // Forzar un reflow para que la transición funcione
+                void zoomedContainer.offsetWidth;
+
+                zoomedContainer.classList.add('show');
+              });
+            });
+
+    document.querySelectorAll('.zoomed-image-container')
+            .forEach(element => {
+              element.addEventListener('click', function (this: HTMLElement, event: Event) {
+                event.stopPropagation();
+
+                this.classList.remove('show');
+
+                // Esperar a que termine la transición antes de ocultar
+                setTimeout(() => {
+                  this.classList.add('d-none');
+                }, 300);
+              });
+            });
+  });
+</script>

@@ -1,0 +1,77 @@
+---
+import {getLangFromUrl, useTranslations, getTranslations} from '../../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
+const services = getTranslations(currentLocale);
+---
+
+<section id="services"
+         class="py-5 bg-dark text-white"
+         data-bs-theme="dark">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 mx-auto text-center">
+        <span class="badge bg-danger px-3 py-2 rounded-pill mb-4">{t('common.our-services')}</span>
+        <h2 class="display-6 fw-bold mb-4">{t('services.professional-vehicle-solutions')}</h2>
+      </div>
+    </div>
+    {
+      services.map(({
+        title,
+        description,
+        icon,
+        services,
+        image_start,
+        image_end
+      }) => (
+        <div class="card mb-5 service-card border-0 text-white">
+          <div class="row g-0">
+            {
+              image_start &&
+              <div class="col-md-7">
+                <img src={image_start}
+                     class="img-fluid rounded-2 w-100 h-100"
+                     alt={description}>
+              </div>
+            }
+            <div class="col-md-5 order-2">
+              <div class="card-body p-5">
+                <div class="mb-4 d-flex justify-content-center rounded-4 bg-white p-2"
+                     style="--bs-bg-opacity: 0.2; width: 4rem; height: 4rem;">
+                  <i class={`${icon} fs-2`}></i>
+                </div>
+                <h3 class="card-title">{title}</h3>
+                <p class="card-text">{description}</p>
+                <ul class="list-unstyled mb-0">
+                  {
+                    services.map((service) => (
+                      <li class="mb-2">
+                        <i class="bi bi-check2-circle me-1"></i>
+                        <span class="text-white fw-medium">{service}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+            {
+              image_end &&
+              <div class="col-md-7 order-1 order-md-3">
+                <img src={image_end}
+                     class="img-fluid rounded-2 w-100 h-100"
+                     alt={description}>
+              </div>
+            }
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .service-card {
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.95), rgba(220, 53, 69, 0.85));
+  }
+</style>

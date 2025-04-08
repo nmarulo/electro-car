@@ -1,0 +1,46 @@
+---
+import {getLangFromUrl, useTranslations} from '../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
+---
+
+<button id="back-to-top"
+        class="btn btn-danger btn-sm rounded-start-pill position-fixed end-0 mb-3 bottom-0 invisible"
+        aria-label={t('back-to-top.button')}>
+  <i class="bi bi-arrow-up-short fs-4"></i>
+</button>
+
+<style>
+  #back-to-top {
+    transition: all 0.3s ease;
+  }
+
+  #back-to-top:hover {
+    transform: translateY(-5px);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY <= 300) {
+          backToTopButton.classList.add('invisible');
+        } else {
+          backToTopButton.classList.remove('invisible');
+        }
+      });
+
+      backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+</script>

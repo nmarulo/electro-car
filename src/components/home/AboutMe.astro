@@ -1,0 +1,26 @@
+---
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+import {getEntry} from 'astro:content';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const aboutMe = await getEntry('about', `${currentLocale}/me`);
+const {Content} = await aboutMe.render();
+const t = useTranslations(currentLocale);
+---
+
+<div class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <Content/>
+      </div>
+      <div class="col-lg-6">
+        <div class="about-image-container p-3 bg-white rounded shadow">
+          <img src={aboutMe.data.image}
+               class="img-fluid rounded"
+               alt={t('about-me.car-audio-workshop')}>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

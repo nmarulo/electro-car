@@ -1,0 +1,17 @@
+---
+import {getLangFromUrl, useTranslations} from '../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLocale);
+---
+
+<div class="position-fixed end-0 ps-1 bg-success rounded-start-pill"
+     style="bottom: 10%;">
+  <a href="https://wa.me/+17867104369"
+     class="btn text-white"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label={t('whatsapp-button.contact-whatsapp')}>
+    <i class="bi bi-whatsapp fs-1"></i>
+  </a>
+</div>

@@ -1,0 +1,29 @@
+---
+import {languages} from '../i18n/ui';
+import {getLangFromUrl, changeLangFromUrl} from '../i18n/utils';
+
+const currentLocale = getLangFromUrl(Astro.url);
+---
+
+<div class="dropdown">
+  <button class="btn btn-outline-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+    <i class="bi bi-globe2 me-2"></i>{languages[currentLocale]}
+  </button>
+  <ul class="dropdown-menu">
+    {
+      Object.entries(languages)
+            .map(([key, value]) => (
+              <li>
+                <a class="dropdown-item"
+                   href={changeLangFromUrl(Astro.url, key)}>{value}</a>
+              </li>
+            ))
+    }
+  </ul>
+</div>
+
+<style>
+</style>
